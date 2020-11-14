@@ -2,7 +2,7 @@ import { useEffect, useReducer, useCallback } from 'react';
 import './style.css';
 
 const TIMESTEP = 20; // ms
-const SIZE = 50; // px
+const SIZE = 25; // px
 const AWARENESS_RADIUS = 50; // px
 const BEHAVIOR = {
   normal: {
