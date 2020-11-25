@@ -2,7 +2,7 @@ import { useEffect, useReducer, useCallback } from 'react';
 import './style.css';
 
 const TIMESTEP = 20; // ms
-const SIZE = 25; // px
+const SIZE = 50; // px
 const AWARENESS_RADIUS = 50; // px
 const BEHAVIOR = {
   normal: {
@@ -165,7 +165,7 @@ function Bug(props) {
           top: state.y,
           height: SIZE,
           width: SIZE,
-          boxShadow: state.active ? "0px 2px 6px rgba(0, 0, 0, 0.5)" : "0px 0px 3px rgba(0, 0, 0, 0.5)",
+          backgroundImage: `url(${process.env.PUBLIC_URL}/${state.active ? "bug.png" : "squashed-bug.png"})`
         }}
         onClick={() => dispatch({ type: "squash", dispatch: dispatch })}
       ></div>

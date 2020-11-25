@@ -1,7 +1,7 @@
 .Bug {
-    background-image: radial-gradient(at 45% 35%, rgb(63, 63, 63), rgb(0, 0, 0));
-    background-color: black;
-    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 
     position: fixed;
     z-index: 1;
