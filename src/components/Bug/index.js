@@ -105,15 +105,7 @@ function reducer(state, action) {
         return state;
       }
 
-      setTimeout(
-        () => action.dispatch({ type: "wakeUp" }),
-        state.downtime * 1000
-      );
-
       return { ...state, active: false, downtime: state.downtime + 1 };
-
-    case "wakeUp":
-      return { ...state, active: true };
     default:
       return state;
   }
