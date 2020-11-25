@@ -70,7 +70,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      cursor: `url(${process.env.PUBLIC_URL}/scope-small.png) 62 64, auto`
+    }}>
       <div className="scores">
         <div>CURRENT SCORE: {state.inactiveBugs.length}</div>
         <div>HIGH SCORE: {state.highScore}</div>

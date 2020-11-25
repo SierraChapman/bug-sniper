@@ -4,3 +4,7 @@
   margin: 1rem;
   text-align: right;
 }
+
+.App {
+  height: 100vh;
+}
