@@ -21,17 +21,9 @@ function reducer(state, action) {
         };
       }
 
-      break;
-
-    case "awoke":
-      const newInactiveBugs = state.inactiveBugs.filter(bugKey => bugKey !== action.key);
-
-      if (newInactiveBugs.length < state.inactiveBugs.length) {
-        newState = {
-          ...state,
-          activeBugs: [...state.activeBugs, action.key],
-          inactiveBugs: newInactiveBugs,
-        };
+      if (newState.inactiveBugs.length > newState.highScore) {
+        newState.highScore = newState.inactiveBugs.length;
+        localStorage.setItem("highScore", JSON.stringify(newState.highScore));
       }
 
       break;
@@ -50,10 +42,6 @@ function reducer(state, action) {
     default:
   }
 
-  if (newState.inactiveBugs.length > newState.highScore) {
-    newState.highScore = newState.inactiveBugs.length;
-  }
-
   return newState;
 }
 
@@ -63,7 +51,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, {
     activeBugs: [Date.now()],
     inactiveBugs: [],
-    highScore: 0,
+    highScore: parseInt(localStorage.getItem("highScore")) || 0,
   });
 
   useEffect(() => {
