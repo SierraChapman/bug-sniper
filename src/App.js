@@ -16,7 +16,7 @@ function reducer(state, action) {
       if (newActiveBugs.length < state.activeBugs.length) {
         newState = {
           ...state,
-          activeBugs: newActiveBugs,
+          activeBugs: [...newActiveBugs, Date.now()],
           inactiveBugs: [...state.inactiveBugs, action.key],
         };
       }
@@ -40,15 +40,18 @@ function reducer(state, action) {
       newState = { ...state, activeBugs: state.activeBugs.filter(bugKey => bugKey !== action.key) };
       break;
 
+    case "new": 
+      newState = {
+        ...state,
+        activeBugs: [...state.activeBugs, Date.now()],
+      };
+      break;
+
     default:
   }
 
   if (newState.inactiveBugs.length > newState.highScore) {
     newState.highScore = newState.inactiveBugs.length;
-  }
-
-  if (newState.activeBugs.length === 0) {
-    newState.activeBugs = [...newState.activeBugs, Date.now()];
   }
 
   return newState;
@@ -66,7 +69,13 @@ function App() {
   useEffect(() => {
     const handleResize = () => setWindowSize(getWindowSize());
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    const bugGenerationInterval = setInterval(() => dispatch({ type: "new" }), 25000);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearInterval(bugGenerationInterval);
+    };
   }, []);
 
   return (
