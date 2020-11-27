@@ -48,6 +48,13 @@ function reducer(state, action) {
       }
       break;
 
+    case "reload":
+      newState = {
+        ...state,
+        shotsLeft: state.shotsLeft + 1,
+      };
+      break;
+
     default:
   }
 
@@ -86,9 +93,18 @@ function App() {
     return bullets;
   }
 
+  function handleKeyPress(event) {
+    console.log(event);
+
+    if (event.key === " ") {
+      dispatch({ type: "reload" });
+    }
+  }
+
   return (
-    <div className="App" onClick={() => dispatch({ type: "fire" })} style={{
-      cursor: `url(${process.env.PUBLIC_URL}/scope.png) 62 67, auto`
+    <div className="App" onClick={() => dispatch({ type: "fire" })} onKeyDown={handleKeyPress} tabIndex={0} style={{
+      cursor: `url(${process.env.PUBLIC_URL}/scope.png) 62 67, auto`,
+      outline: "none",
     }}>
       <div className="scores">
         <div>CURRENT SCORE: {state.inactiveBugs.length}</div>
