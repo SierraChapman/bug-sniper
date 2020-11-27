@@ -87,8 +87,8 @@ function App() {
   }
 
   return (
-    <div className="App" onClick={() => dispatch({type: "fire"})} style={{
-      cursor: `url(${process.env.PUBLIC_URL}/scope-small.png) 62 64, auto`
+    <div className="App" onClick={() => dispatch({ type: "fire" })} style={{
+      cursor: `url(${process.env.PUBLIC_URL}/scope.png) 62 67, auto`
     }}>
       <div className="scores">
         <div>CURRENT SCORE: {state.inactiveBugs.length}</div>
