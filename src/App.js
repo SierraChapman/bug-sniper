@@ -2,6 +2,8 @@ import { useState, useEffect, useReducer } from 'react';
 import Bug from './components/Bug';
 import './App.css';
 
+const MAX_BULLETS = 6;
+
 function getWindowSize() {
   return { width: window.innerWidth, height: window.innerHeight };
 }
@@ -49,6 +51,7 @@ function reducer(state, action) {
       break;
 
     case "reload":
+      if (state.shotsLeft < MAX_BULLETS)
       newState = {
         ...state,
         shotsLeft: state.shotsLeft + 1,
@@ -68,7 +71,7 @@ function App() {
     activeBugs: [Date.now()],
     inactiveBugs: [],
     highScore: parseInt(localStorage.getItem("highScore")) || 0,
-    shotsLeft: 6,
+    shotsLeft: MAX_BULLETS,
   });
 
   useEffect(() => {
