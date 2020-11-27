@@ -8,3 +8,12 @@
 .App {
   height: 100vh;
 }
+
+.bullet {
+  height: 30px;
+  width: 10px;
+  background-color: rgb(207, 207, 207);
+  display: inline-block;
+  margin: 5px;
+  border-radius: 3px;
+}

@@ -39,6 +39,15 @@ function reducer(state, action) {
       };
       break;
 
+      case "fire": 
+      if (state.shotsLeft > 0) {
+        newState = {
+          ...state,
+          shotsLeft: state.shotsLeft - 1,
+        };
+      }
+      break;
+
     default:
   }
 
@@ -52,6 +61,7 @@ function App() {
     activeBugs: [Date.now()],
     inactiveBugs: [],
     highScore: parseInt(localStorage.getItem("highScore")) || 0,
+    shotsLeft: 6,
   });
 
   useEffect(() => {
@@ -66,13 +76,29 @@ function App() {
     };
   }, []);
 
+  function renderBullets(numBullets) {
+    const bullets = [];
+
+    for (let i = 0; i < numBullets; i++) {
+      bullets.push(<div className="bullet" key={i}></div>);
+    }
+
+    return bullets;
+  }
+
+  function handleFire() {
+    console.log("click!");
+    dispatch({type: "fire"});
+  }
+
   return (
-    <div className="App" style={{
+    <div className="App" onClick={handleFire} style={{
       cursor: `url(${process.env.PUBLIC_URL}/scope-small.png) 62 64, auto`
     }}>
       <div className="scores">
         <div>CURRENT SCORE: {state.inactiveBugs.length}</div>
         <div>HIGH SCORE: {state.highScore}</div>
+        <div>{renderBullets(state.shotsLeft)}</div>
       </div>
       {[
         ...state.inactiveBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} />),
