@@ -39,7 +39,7 @@ function reducer(state, action) {
       };
       break;
 
-      case "fire": 
+    case "fire": 
       if (state.shotsLeft > 0) {
         newState = {
           ...state,
@@ -86,13 +86,8 @@ function App() {
     return bullets;
   }
 
-  function handleFire() {
-    console.log("click!");
-    dispatch({type: "fire"});
-  }
-
   return (
-    <div className="App" onClick={handleFire} style={{
+    <div className="App" onClick={() => dispatch({type: "fire"})} style={{
       cursor: `url(${process.env.PUBLIC_URL}/scope-small.png) 62 64, auto`
     }}>
       <div className="scores">
@@ -102,7 +97,7 @@ function App() {
       </div>
       {[
         ...state.inactiveBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} />),
-        ...state.activeBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} />).reverse()
+        ...state.activeBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} clickable={state.shotsLeft > 0}/>).reverse()
       ]}
     </div>
   );

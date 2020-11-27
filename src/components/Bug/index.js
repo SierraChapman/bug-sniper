@@ -148,6 +148,18 @@ function Bug(props) {
     [state.active, id, appDispatch]
   );
 
+  function handleSquash() {
+    if (props.clickable) {
+      dispatch({ type: "squash", dispatch: dispatch });
+    }
+  }
+
+  function handleScare() {
+    if (props.clickable) {
+      dispatch({ type: "scare", dispatch: dispatch });
+    }
+  }
+
   return (
     <>
       <div
@@ -159,7 +171,7 @@ function Bug(props) {
           width: SIZE,
           backgroundImage: `url(${process.env.PUBLIC_URL}/${state.active ? "bug.png" : "squashed-bug.png"})`
         }}
-        onClick={() => dispatch({ type: "squash", dispatch: dispatch })}
+        onClick={handleSquash}
       ></div>
       <div
         className="bugAwareZone"
@@ -169,7 +181,7 @@ function Bug(props) {
           height: AWARENESS_RADIUS * 2 + SIZE,
           width: AWARENESS_RADIUS * 2 + SIZE,
         }}
-        onClick={() => dispatch({ type: "scare", dispatch: dispatch })}
+        onClick={handleScare}
       ></div>
     </>
     
