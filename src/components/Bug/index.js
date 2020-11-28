@@ -170,7 +170,9 @@ function Bug(props) {
           top: state.y,
           height: SIZE,
           width: SIZE,
-          backgroundImage: `url(${process.env.PUBLIC_URL}/${state.active ? "bug.png" : "squashed-bug.png"})`
+          backgroundImage: `url(${process.env.PUBLIC_URL}/${state.active ? "bug.png" : "squashed-bug.png"})`,
+          opacity: state.active ? 1 : 0,
+          transition: `20ms, opacity ${FADE_TIME}s`
         }}
         onClick={handleSquash}
       ></div>
