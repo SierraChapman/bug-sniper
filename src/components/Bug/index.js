@@ -14,7 +14,7 @@ const BEHAVIOR = {
     rotation: 2,
   },
 };
-const ESCAPE_TIME = 90; // seconds
+const FADE_TIME = 30; // seconds
 const EXCITE_TIME = 5; // seconds
 
 function generateInitialState(windowSize) {
@@ -133,16 +133,17 @@ function Bug(props) {
 
   useEffect(
     () => {
-      appDispatch({ type: state.active ? "awoke" : "squashed", key: id });
 
-      if (state.active) {
-        const escapeTimeout = setTimeout(
+      if (!state.active) {
+        appDispatch({ type: "squashed", key: id });
+
+        const fadeTimeout = setTimeout(
           () => {
-            appDispatch({ type: "escaped", key: id });
+            appDispatch({ type: "remove", key: id });
           },
-          ESCAPE_TIME * 1000
+          FADE_TIME * 1000
         );
-        return () => clearTimeout(escapeTimeout);
+        return () => clearTimeout(fadeTimeout);
       }
     },
     [state.active, id, appDispatch]

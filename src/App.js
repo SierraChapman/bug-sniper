@@ -30,8 +30,8 @@ function reducer(state, action) {
 
       break;
 
-    case "escaped":
-      newState = { ...state, activeBugs: state.activeBugs.filter(bugKey => bugKey !== action.key) };
+    case "remove":
+      newState = { ...state, inactiveBugs: state.inactiveBugs.filter(bugKey => bugKey !== action.key) };
       break;
 
     case "new": 
