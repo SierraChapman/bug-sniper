@@ -105,7 +105,7 @@ function App() {
   }
 
   return (
-    <div className="App" onClick={() => dispatch({ type: "fire" })} onKeyDown={handleKeyPress} tabIndex={0} style={{
+    <div className="App" onClick={() => dispatch({ type: "fire" })} onKeyUp={handleKeyPress} tabIndex={0} style={{
       cursor: `url(${process.env.PUBLIC_URL}/scope.png) 62 67, auto`,
       outline: "none",
     }}>
