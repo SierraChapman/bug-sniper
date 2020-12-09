@@ -20,11 +20,12 @@ function reducer(state, action) {
           ...state,
           activeBugs: [...newActiveBugs, Date.now()],
           inactiveBugs: [...state.inactiveBugs, action.key],
+          score: state.score + 1
         };
       }
 
-      if (newState.inactiveBugs.length > newState.highScore) {
-        newState.highScore = newState.inactiveBugs.length;
+      if (newState.score > newState.highScore) {
+        newState.highScore = newState.score;
         localStorage.setItem("highScore", JSON.stringify(newState.highScore));
       }
 
@@ -70,6 +71,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, {
     activeBugs: [Date.now()],
     inactiveBugs: [],
+    score: 0,
     highScore: parseInt(localStorage.getItem("highScore")) || 0,
     shotsLeft: MAX_BULLETS,
   });
@@ -97,8 +99,6 @@ function App() {
   }
 
   function handleKeyPress(event) {
-    console.log(event);
-
     if (event.key === " ") {
       dispatch({ type: "reload" });
     }
@@ -110,7 +110,7 @@ function App() {
       outline: "none",
     }}>
       <div className="scores">
-        <div>CURRENT SCORE: {state.inactiveBugs.length}</div>
+        <div>CURRENT SCORE: {state.score}</div>
         <div>HIGH SCORE: {state.highScore}</div>
         <div>{renderBullets(state.shotsLeft)}</div>
       </div>
