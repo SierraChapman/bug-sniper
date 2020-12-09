@@ -49,6 +49,11 @@ function reducer(state, action) {
           ...state,
           shotsLeft: state.shotsLeft - 1,
         };
+      } else {
+        newState = {
+          ...state,
+          showReloadMessage: true,
+        }
       }
       break;
 
@@ -57,6 +62,7 @@ function reducer(state, action) {
       newState = {
         ...state,
         shotsLeft: state.shotsLeft + 1,
+        showReloadMessage: false,
       };
       break;
 
@@ -75,6 +81,7 @@ function App() {
     score: 0,
     highScore: parseInt(localStorage.getItem("highScore")) || 0,
     shotsLeft: MAX_BULLETS,
+    showReloadMessage: false,
   });
 
   useEffect(() => {
@@ -115,7 +122,7 @@ function App() {
         <div>HIGH SCORE: {state.highScore}</div>
         <div>{renderBullets(state.shotsLeft)}</div>
       </div>
-      <ReloadMessage display={true}/>
+      <ReloadMessage display={state.showReloadMessage}/>
       {[
         ...state.inactiveBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} />),
         ...state.activeBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} clickable={state.shotsLeft > 0}/>).reverse()
