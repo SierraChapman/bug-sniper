@@ -1,5 +1,6 @@
 import { useState, useEffect, useReducer } from 'react';
 import Bug from './components/Bug';
+import ReloadMessage from './components/ReloadMessage';
 import './App.css';
 
 const MAX_BULLETS = 6;
@@ -114,6 +115,7 @@ function App() {
         <div>HIGH SCORE: {state.highScore}</div>
         <div>{renderBullets(state.shotsLeft)}</div>
       </div>
+      <ReloadMessage display={true}/>
       {[
         ...state.inactiveBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} />),
         ...state.activeBugs.map(bugKey => <Bug key={bugKey} id={bugKey} windowSize={windowSize} appDispatch={dispatch} clickable={state.shotsLeft > 0}/>).reverse()
