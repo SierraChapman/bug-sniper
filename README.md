@@ -1,23 +1,20 @@
-# Bug Squasher for Cats
+# Bug Sniper
 
-This is a game I made for my cat using React.js. It is intended to be played on a touch screen, but humans can also play it with a mouse.
+This is a game I made with my nephews, using their art and ideas. It is a spin-off of [Bug Squasher](https://github.com/SierraChapman/bug-squasher), a game I made for my cat.
 
-## Game Mechanics
+## Deployed Link
 
-### Overview
+The application is live on GitHub Pages and can be [viewed here](https://sierrachapman.github.io/bug-sniper/). 
 
-Small bugs run around the screen. When they are pressed, they get temporarily "squashed," and then then they start moving again. The better the player is at squashing, the more bugs appear on the screen and the longer they take to wake up.
+## Technologies Used
 
-### Scoring
-
-The score is the number of bugs that are currently squashed. This goes up and down, since bugs do not stay squashed forever. The high score is the maximum number of bugs that have been squashed at once during this session.
-
-### Bug Behavior
-
-Each bug behaves according to these rules:
-
-* A new bug is generated whenever there are no active bugs (i.e. the last active bug is squashed or escapes).
-* Bugs run around somewhat randomly at a fixed speed without leaving the screen.
-* If a bug is nearly squashed, its speed temporarily increases and it runs away from the hit.
-* If a bug is hit, it is deactivated for a number of seconds equal to the number of times it has been squashed.
-* If a bug is awake for 90 seconds, it "escapes" and disappears.
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [React](https://reactjs.org/)
+* [Node Package Manager (NPM)](https://www.npmjs.com/)
+* [create-react-app](https://github.com/facebook/create-react-app)
+* [Git](https://git-scm.com/)
+* [GitHub](https://github.com/)
+* [GitHub Pages](https://pages.github.com/)
+* [InkScape](https://inkscape.org/)
