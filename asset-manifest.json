@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bug-sniper/static/css/main.cd6496a0.chunk.css",
+    "main.js": "/bug-sniper/static/js/main.c257322f.chunk.js",
+    "main.js.map": "/bug-sniper/static/js/main.c257322f.chunk.js.map",
+    "runtime-main.js": "/bug-sniper/static/js/runtime-main.d51b7942.js",
+    "runtime-main.js.map": "/bug-sniper/static/js/runtime-main.d51b7942.js.map",
+    "static/js/2.ff40d22b.chunk.js": "/bug-sniper/static/js/2.ff40d22b.chunk.js",
+    "static/js/2.ff40d22b.chunk.js.map": "/bug-sniper/static/js/2.ff40d22b.chunk.js.map",
+    "static/js/3.74d1822a.chunk.js": "/bug-sniper/static/js/3.74d1822a.chunk.js",
+    "static/js/3.74d1822a.chunk.js.map": "/bug-sniper/static/js/3.74d1822a.chunk.js.map",
+    "index.html": "/bug-sniper/index.html",
+    "static/css/main.cd6496a0.chunk.css.map": "/bug-sniper/static/css/main.cd6496a0.chunk.css.map",
+    "static/js/2.ff40d22b.chunk.js.LICENSE.txt": "/bug-sniper/static/js/2.ff40d22b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d51b7942.js",
+    "static/js/2.ff40d22b.chunk.js",
+    "static/css/main.cd6496a0.chunk.css",
+    "static/js/main.c257322f.chunk.js"
+  ]
+}
